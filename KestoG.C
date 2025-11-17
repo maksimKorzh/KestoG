@@ -3103,9 +3103,7 @@ int compute( int b[46],int color, int time, char output[256])
                                             case 1: alpha = -210;beta = 210;break;
                                             case 2: alpha = -MATE;beta = MATE;break;
                                                         }
-                                          //printf("repeat search\n");
-                                          // TODO: uncomment!
-                                          // goto repeat_search;
+                                          goto repeat_search;
                                     }
                                     value = newvalue;
                                     alpha = value - 10;
@@ -3654,29 +3652,30 @@ bool is_prime(long n)
 // black king 10
 
 /* set board position */
-int input_board[8][8] = {
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 6, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 5, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 }
+int input_board[8][8] = { // white on the right, black on the left
+  { 6, 0, 6, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 5, 0, 5 },
+  { 6, 0, 6, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 5, 0, 5 },
+  { 6, 0, 6, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 5, 0, 5 },
+  { 6, 0, 6, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 5, 0, 5 }
 };
-
 
 /* print board */
 void print_input_board() {
+  printf("\n");
   for (int r = 0; r < 8; r++) {
     for (int c = 0; c < 8; c++) {
       printf("%2d ", input_board[r][c]);
     }
     printf("\n");
-  }
+  } printf("\n");
 }
 
-int main() {
+void move_from_initial_position() {
+  printf("\n Before:\n");
   char status[1024];
   int playnow = 0;
   struct CBmove move;
@@ -3685,7 +3684,7 @@ int main() {
 
   /* call engine to get move for BLACK */
   // input_board[8][8], color, maxtime, status, playnow, info, unused, struct CBmove *move);
-  getmove(input_board, BLACK, 1.0, status, &playnow, 1, 0, &move);
+  getmove(input_board, WHITE, 1.0, status, &playnow, 1, 0, &move);
   printf("Status: %s\n", status);
   printf("Move from (%d,%d) to (%d,%d)\n",
           move.from.x, move.from.y,
@@ -3700,6 +3699,11 @@ int main() {
                 move.delpiece[i]);
       }
   }
+  printf("\n After:\n");
   print_input_board();
+}
+
+int main() {
+  move_from_initial_position();
   return 0;
 }
