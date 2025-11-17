@@ -9,6 +9,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <time.h>
+#include <sys/time.h>
 
 /* board values */
 #define OCCUPIED 0	   // un_occupied dark squares
@@ -3750,7 +3751,8 @@ void movetostring(struct move2 move,char str[80])
   to++;
   c='-';
   if(move.l>2) c='x';
-  sprintf(str,"%2d%c%2d  %s%c%s",from, c, to, sq_to_coord(from), c, sq_to_coord(to));
+  //sprintf(str,"%2d%c%2d  %s%c%s",from, c, to, sq_to_coord(from), c, sq_to_coord(to));
+  sprintf(str,"%s%c%s",sq_to_coord(from), c, sq_to_coord(to));
 }
 
 void array_to_board(int board[8][8], int b[46]) {
@@ -3776,13 +3778,33 @@ void array_to_board(int board[8][8], int b[46]) {
       b[i]=OCCUPIED;
 }
 
+int get_time_ms() {
+  struct timeval time_value;
+  gettimeofday(&time_value, NULL);
+  return time_value.tv_sec * 1000 + time_value.tv_usec / 1000;
+}
+
 void perft_driver(int b[46], int depth, int color) {
+  if (depth == 0) {
+    nodes++;
+    return;
+  }
+  int capture, i, n;
+  struct move2 movelist[MAXMOVES];
+  if (capture) n = Gen_Captures(b,movelist,color);
+  else n = Gen_Moves(b,movelist,color);
+  for (i = 0; i < n; i++) {
+    domove(b,&movelist[i]);
+    perft_driver(b, depth-1, color^CHANGECOLOR);
+    undomove(b,&movelist[i]);
+  }
 }
 
 void perft_test(int depth, int color) {
+  U64 start = get_time_ms();
   int b[46];
-  printf("Perft test:\n");
   print_input_board();
+  printf(" Perft test, depth %d:\n\n", depth);
   array_to_board(input_board, b);
   int capture, i, n;
   char moveStr[80];
@@ -3791,13 +3813,22 @@ void perft_test(int depth, int color) {
   if (capture) n = Gen_Captures(b,movelist,color);
   else n = Gen_Moves(b,movelist,color);
   for (i = 0; i < n; i++) {
+    domove(b,&movelist[i]);
+    U64 cummulative_nodes = nodes;
+    perft_driver(b, depth-1, color);
+    undomove(b,&movelist[i]);
+    U64 old_nodes = nodes - cummulative_nodes;
     movetostring(movelist[i], moveStr);
-    printf(" Move: %s\n", moveStr);
+    printf(" Move: %s, nodes: %lu\n", moveStr, old_nodes);
   }
+  // print results
+  printf("\n    Depth: %d\n", depth);
+  printf("    Nodes: %d\n", nodes);
+  printf("     Time: %ld\n\n", get_time_ms() - start);
 }
 
 int main() {
   //move_from_initial_position();
-  perft_test(1, WHITE);
+  perft_test(10, WHITE);
   return 0;
 }
