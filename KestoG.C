@@ -3723,13 +3723,13 @@ void move_from_initial_position() {
 char *sq_to_coord(int sq) {
   char *coords[] = {
     "xx",
-    "b8", "d8", "f8", "g8",
+    "b8", "d8", "f8", "h8",
     "a7", "c7", "e7", "g7",
-    "b6", "d6", "f6", "g6",
+    "b6", "d6", "f6", "h6",
     "a5", "c5", "e5", "g5",
-    "b4", "d4", "f4", "g4",
+    "b4", "d4", "f4", "h4",
     "a3", "c3", "e3", "g3",
-    "b2", "d2", "f2", "g2",
+    "b2", "d2", "f2", "h2",
     "a1", "c1", "e1", "g1"
   }; return coords[sq];
 }
