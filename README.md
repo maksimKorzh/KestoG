@@ -11,6 +11,7 @@ Linux command line application where developer can manually call these functions
   - int WINAPI enginecommand (char str[256], char reply[1024]);
   - int WINAPI islegal (int b[8][8], int color, int from, int to,struct CBmove *move);
   - int WINAPI getmove (int board[8][8],int color,double maxtime,char str[1024],int *playnow,int info,int unused,struct CBmove *move)
+<br>
 The latter is probably the most useful because this is what gives engine a position to search and returns the best move.
 I also provided function move_from_initial_position() as an example.
 
