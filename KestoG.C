@@ -3669,7 +3669,7 @@ int input_board[8][8] = { // white on the right, black on the left
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 5, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 }*/
 };
 
@@ -3829,6 +3829,8 @@ void perft_test(int depth, int color) {
 
 int main() {
   //move_from_initial_position();
+  
+  // to set position for perft alter input_board[8][8] array
   perft_test(10, WHITE);
   return 0;
 }

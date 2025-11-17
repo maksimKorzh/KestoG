@@ -13,7 +13,7 @@ Linux command line application where developer can manually call these functions
   - int WINAPI getmove (int board[8][8],int color,double maxtime,char str[1024],int *playnow,int info,int unused,struct CBmove *move)
 <br>
 The latter is probably the most useful because this is what gives engine a position to search and returns the best move.
-I also provided function move_from_initial_position() as an example.
+I also provided functions move_from_initial_position() and perft_test() as an example.
 
 # Search move
      cmk@cmk:~/KestoG$ make && ./KestoG 
