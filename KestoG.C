@@ -3815,7 +3815,7 @@ void perft_test(int depth, int color) {
   for (i = 0; i < n; i++) {
     domove(b,&movelist[i]);
     U64 cummulative_nodes = nodes;
-    perft_driver(b, depth-1, color);
+    perft_driver(b, depth-1, color^CHANGECOLOR);
     undomove(b,&movelist[i]);
     U64 old_nodes = nodes - cummulative_nodes;
     movetostring(movelist[i], moveStr);
@@ -3831,6 +3831,6 @@ int main() {
   //move_from_initial_position();
   
   // use input_board[8][8] to set the position for perft
-  perft_test(10, WHITE);
+  perft_test(2, WHITE);
   return 0;
 }
