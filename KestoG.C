@@ -3644,7 +3644,7 @@ bool is_prime(long n)
     return(true);
  }
 
-/* API call example - get move from a position */
+/* BELOW IS MY HELPER CODE, THIS IS NOT PART OF THE ORIGINAL ENGINE!!! */
 
 // white man 5
 // black man 6
@@ -3661,6 +3661,15 @@ int input_board[8][8] = { // white on the right, black on the left
   { 0, 6, 0, 0, 0, 5, 0, 5 },
   { 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 5, 0, 5 }
+  
+  /*{ 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 5, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 }*/
 };
 
 /* print board */
@@ -3668,10 +3677,17 @@ void print_input_board() {
   printf("\n");
   for (int r = 0; r < 8; r++) {
     for (int c = 0; c < 8; c++) {
-      printf("%2d ", input_board[r][c]);
+      if (c==0) printf(" %d", 8-r);
+      switch(input_board[7-c][r]) {
+        case WHITE|MAN: printf(" o"); break;
+        case WHITE|KING: printf(" O"); break;
+        case BLACK|MAN: printf(" x"); break;
+        case BLACK|KING: printf(" X"); break;
+        case 0: printf(" ."); break;
+      }
     }
     printf("\n");
-  } printf("\n");
+  } printf("   a b c d e f g h\n\n");
 }
 
 void move_from_initial_position() {
@@ -3703,7 +3719,85 @@ void move_from_initial_position() {
   print_input_board();
 }
 
+char *sq_to_coord(int sq) {
+  char *coords[] = {
+    "xx",
+    "b8", "d8", "f8", "g8",
+    "a7", "c7", "e7", "g7",
+    "b6", "d6", "f6", "g6",
+    "a5", "c5", "e5", "g5",
+    "b4", "d4", "f4", "g4",
+    "a3", "c3", "e3", "g3",
+    "b2", "d2", "f2", "g2",
+    "a1", "c1", "e1", "g1"
+  }; return coords[sq];
+}
+
+void movetostring(struct move2 move,char str[80])
+{
+  int j,from,to;
+  char c;
+  
+  from=move.m[0] % 256;
+  to=move.m[1] % 256;
+  from=from-(from/9);
+  to=to-(to/9);
+  from-=5;
+  to-=5;
+  j=from%4;from-=j;j=3-j;from+=j;
+  j=to%4;to-=j;j=3-j;to+=j;
+  from++;
+  to++;
+  c='-';
+  if(move.l>2) c='x';
+  sprintf(str,"%2d%c%2d  %s%c%s",from, c, to, sq_to_coord(from), c, sq_to_coord(to));
+}
+
+void array_to_board(int board[8][8], int b[46]) {
+  int i;
+  int value;
+  Create_HashFunction();
+  /* initialize board */
+  for(i=0;i<46;i++)
+    b[i]=OCCUPIED;
+  for(i=5;i<=40;i++)
+    b[i]=FREE;
+    b[5]=board[0][0];b[6]=board[2][0];b[7]=board[4][0];b[8]=board[6][0];
+    b[10]=board[1][1];b[11]=board[3][1];b[12]=board[5][1];b[13]=board[7][1];
+    b[14]=board[0][2];b[15]=board[2][2];b[16]=board[4][2];b[17]=board[6][2];
+    b[19]=board[1][3];b[20]=board[3][3];b[21]=board[5][3];b[22]=board[7][3];
+    b[23]=board[0][4];b[24]=board[2][4];b[25]=board[4][4];b[26]=board[6][4];
+    b[28]=board[1][5];b[29]=board[3][5];b[30]=board[5][5];b[31]=board[7][5];
+    b[32]=board[0][6];b[33]=board[2][6];b[34]=board[4][6];b[35]=board[6][6];
+    b[37]=board[1][7];b[38]=board[3][7];b[39]=board[5][7];b[40]=board[7][7];
+  for(i=5;i<=40;i++)
+    if ( b[i] == 0 ) b[i]=FREE;
+    for(i=9;i<=36;i+=9)
+      b[i]=OCCUPIED;
+}
+
+void perft_driver(int b[46], int depth, int color) {
+}
+
+void perft_test(int depth, int color) {
+  int b[46];
+  printf("Perft test:\n");
+  print_input_board();
+  array_to_board(input_board, b);
+  int capture, i, n;
+  char moveStr[80];
+  struct move2 movelist[MAXMOVES];
+  capture = test_capture(b, color);
+  if (capture) n = Gen_Captures(b,movelist,color);
+  else n = Gen_Moves(b,movelist,color);
+  for (i = 0; i < n; i++) {
+    movetostring(movelist[i], moveStr);
+    printf(" Move: %s\n", moveStr);
+  }
+}
+
 int main() {
-  move_from_initial_position();
+  //move_from_initial_position();
+  perft_test(1, WHITE);
   return 0;
 }
