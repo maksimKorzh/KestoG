@@ -61,29 +61,4 @@ I also provided functions move_from_initial_position() and perft_test() as an ex
      0  6  0  0  0  5  0  5 
 
 # Perft test
-    cmk@cmk:~/KestoG$ make && ./KestoG 
-    gcc -O3 -x c KestoG.C -o KestoG
-    
-     8 . x . x . x . x
-     7 x . x . x . x .
-     6 . x . x . x . x
-     5 . . . . . . . .
-     4 . . . . . . . .
-     3 o . o . o . o .
-     2 . o . o . o . o
-     1 o . o . o . o .
-       a b c d e f g h
-    
-     Perft test, depth 10:
-    
-     Move: g3-f4, nodes: 48601093
-     Move: g3-g4, nodes: 65135691
-     Move: e3-d4, nodes: 56974563
-     Move: e3-f4, nodes: 56818265
-     Move: c3-b4, nodes: 64503403
-     Move: c3-d4, nodes: 56524808
-     Move: a3-b4, nodes: 57961671
-    
-        Depth: 10
-        Nodes: 406519494
-         Time: 7070
+Debugging...

@@ -3656,10 +3656,10 @@ bool is_prime(long n)
 int input_board[8][8] = { // white on the right, black on the left
   { 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 5, 0, 5 },
-  { 6, 0, 6, 0, 0, 0, 5, 0 },
-  { 0, 6, 0, 0, 0, 5, 0, 5 },
-  { 6, 0, 6, 0, 0, 0, 5, 0 },
-  { 0, 6, 0, 0, 0, 5, 0, 5 },
+  { 6, 0, 0, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 6, 0, 5, 0, 5 },
+  { 6, 0, 6, 0, 5, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 0, 0, 5 },
   { 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 5, 0, 5 }
   
@@ -3831,6 +3831,6 @@ int main() {
   //move_from_initial_position();
   
   // use input_board[8][8] to set the position for perft
-  perft_test(3, WHITE);
+  perft_test(2, WHITE);
   return 0;
 }
