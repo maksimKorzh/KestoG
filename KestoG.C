@@ -3103,7 +3103,9 @@ int compute( int b[46],int color, int time, char output[256])
                                             case 1: alpha = -210;beta = 210;break;
                                             case 2: alpha = -MATE;beta = MATE;break;
                                                         }
-                                          goto repeat_search;
+                                          //printf("repeat search\n");
+                                          // TODO: uncomment!
+                                          // goto repeat_search;
                                     }
                                     value = newvalue;
                                     alpha = value - 10;
@@ -3111,7 +3113,9 @@ int compute( int b[46],int color, int time, char output[256])
 
 		elapsed = (clock()-t)/CLOCKS_PER_SEC;
 
-		bestfrom = -1;
+        //printf("depth %d %d %d\n", depth, (int)(1000*elapsed), (int)(time));
+		
+        bestfrom = -1;
 		bestto = -1;
 		// get best move from hashtable:
 		hashretrieve(b, MAXMOVES+1, &dummy, &alpha, &beta, &bestfrom, &bestto, color);
@@ -3182,6 +3186,7 @@ int compute( int b[46],int color, int time, char output[256])
 
 int negamax( int b[46], int depth, int alpha, int beta, int color, int iid )
 {
+    //printf("negamax depth %d\n", depth);
 	int value;
 	int localalpha=alpha, localbeta=beta;
 	int maxvalue=-MATE;
@@ -3642,46 +3647,59 @@ bool is_prime(long n)
  }
 
 /* API call example - get move from a position */
-int main() {
-    int board[8][8];
-    char status[1024];
-    int playnow = 0;
-    struct CBmove move;
 
-    /* clear board */
-    memset(board, 0, sizeof(board));
+// white man 5
+// black man 6
+// white king 9
+// black king 10
 
-    /* set BLACK pieces on rows 0,1,2 on dark squares */
-    for (int r = 0; r < 3; r++)
-        for (int c = 0; c < 8; c++)
-            if ((r + c) % 2 == 1)
-                board[r][c] = BLACK | MAN;
+/* set board position */
+int input_board[8][8] = {
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 6, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 5, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 }
+};
 
-    /* set WHITE pieces on rows 5,6,7 on dark squares */
-    for (int r = 5; r < 8; r++)
-        for (int c = 0; c < 8; c++)
-            if ((r + c) % 2 == 1)
-                board[r][c] = WHITE | MAN;
 
-    /* call engine to get move for BLACK */
-    getmove(board, BLACK, 1.0, status, &playnow, 1, 0, &move);
-
-    printf("Status: %s\n", status);
-    
-    printf("Move from (%d,%d) to (%d,%d)\n",
-           move.from.x, move.from.y,
-           move.to.x, move.to.y);
-    printf("Old piece: %d, New piece: %d\n", move.oldpiece, move.newpiece);
-
-    if (move.jumps > 0) {
-        printf("Jump path (%d jumps):\n", move.jumps);
-        for (int i = 0; i < move.jumps; i++) {
-            printf("  step %d: (%d,%d), captured piece: %d\n",
-                   i + 1,
-                   move.path[i].x, move.path[i].y,
-                   move.delpiece[i]);
-        }
+/* print board */
+void print_input_board() {
+  for (int r = 0; r < 8; r++) {
+    for (int c = 0; c < 8; c++) {
+      printf("%2d ", input_board[r][c]);
     }
+    printf("\n");
+  }
+}
 
-    return 0;
+int main() {
+  char status[1024];
+  int playnow = 0;
+  struct CBmove move;
+
+  print_input_board();  
+
+  /* call engine to get move for BLACK */
+  // input_board[8][8], color, maxtime, status, playnow, info, unused, struct CBmove *move);
+  getmove(input_board, BLACK, 1.0, status, &playnow, 1, 0, &move);
+  printf("Status: %s\n", status);
+  printf("Move from (%d,%d) to (%d,%d)\n",
+          move.from.x, move.from.y,
+          move.to.x, move.to.y);
+  printf("Old piece: %d, New piece: %d\n", move.oldpiece, move.newpiece);
+  if (move.jumps > 0) {
+    printf("Jump path (%d jumps):\n", move.jumps);
+    for (int i = 0; i < move.jumps; i++) {
+      printf("  step %d: (%d,%d), captured piece: %d\n",
+                i + 1,
+                move.path[i].x, move.path[i].y,
+                move.delpiece[i]);
+      }
+  }
+  print_input_board();
+  return 0;
 }
