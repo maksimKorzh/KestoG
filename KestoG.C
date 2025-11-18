@@ -3832,6 +3832,6 @@ int main() {
   //move_from_initial_position();
   
   // use input_board[8][8] to set the position for perft
-  perft_test(3, WHITE);
+  perft_test(7, WHITE);
   return 0;
 }
