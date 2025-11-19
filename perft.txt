@@ -1,0 +1,62 @@
+INITIAL
+
+Vakhtan:
+Move: a3b4, nodes: 153930
+Move: c3d4, nodes: 111711
+Move: c3b4, nodes: 178054
+Move: e3f4, nodes: 103528
+Move: e3d4, nodes: 124257
+Move: g3h4, nodes: 156933
+Move: g3f4, nodes: 101489
+
+KestoG:
+Move: a3-b4, nodes: 153931 -
+Move: c3-d4, nodes: 111712 -
+Move: c3-b4, nodes: 178054 +
+Move: e3-f4, nodes: 103528 +
+Move: e3-d4, nodes: 124258 -
+Move: g3-h4, nodes: 156933 +
+Move: g3-f4, nodes: 101489 +
+
+AFTER A3B4
+
+Vakhtan:
+Move: b6a5, nodes: 25128
+Move: b6c5, nodes: 15646
+Move: d6c5, nodes: 2856
+Move: d6e5, nodes: 25551
+Move: f6e5, nodes: 23201
+Move: f6g5, nodes: 32367
+Move: h6g5, nodes: 29181
+
+KestoG:
+Move: h6-g5, nodes: 29182 -
+Move: f6-g5, nodes: 32367 +
+Move: f6-e5, nodes: 23201 +
+Move: d6-e5, nodes: 25551 +
+Move: d6-c5, nodes: 2856  +
+Move: b6-c5, nodes: 15646 +
+Move: b6-a5, nodes: 25128 +
+
+AFTER H6G5
+
+Vakhtan:
+Move: b4c5, nodes: 243
+index.html:542 Move: b4a5, nodes: 5074
+index.html:542 Move: c3d4, nodes: 3958
+index.html:542 Move: e3f4, nodes: 418
+index.html:542 Move: e3d4, nodes: 4938
+index.html:542 Move: g3h4, nodes: 4179
+index.html:542 Move: g3f4, nodes: 2645
+index.html:542 Move: b2a3, nodes: 7726
+
+KestoG:
+Move: b4-a5, nodes: 5074 +
+Move: b4-c5, nodes: 243  +
+Move: g3-f4, nodes: 2645 +
+Move: g3-h4, nodes: 4179 +
+Move: e3-d4, nodes: 4938 +
+Move: e3-f4, nodes: 419  -
+Move: c3-d4, nodes: 3958 +
+Move: b2-a3, nodes: 7726 +
+
