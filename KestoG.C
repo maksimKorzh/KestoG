@@ -3690,12 +3690,21 @@ int input_board[8][8] = { // white on the right, black on the left
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 }*/
   
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  /*{ 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 6, 0, 0, 0, 0, 0, 0 },
   { 9, 0, 0, 0, 6, 0, 0, 0 },
   { 0, 0, 0, 6, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 6, 0, 0, 0 },
   { 0, 0, 0, 6, 0, 6, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 }*/
+  
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 }
 };
@@ -3716,6 +3725,10 @@ void print_input_board() {
     }
     printf("\n");
   } printf("   a b c d e f g h\n\n");
+}
+
+void print_board46(int b[46]) {
+
 }
 
 void move_from_initial_position() {
@@ -3855,10 +3868,18 @@ void perft_test(int depth, int color) {
   printf("     Time: %ld\n\n", get_time_ms() - start);
 }
 
+void test() {
+  int b[46];
+  array_to_board(input_board, b);
+  for (int i = 0; i < 46; i++) printf(" %2d", b[i]);
+}
+
 int main() {
   //move_from_initial_position();
   
   // use input_board[8][8] to set the position for perft
-  perft_test(1, WHITE); // board 3690
+  //perft_test(1, WHITE); // board 3690
+  
+  test();
   return 0;
 }
