@@ -3706,7 +3706,7 @@ int input_board[8][8] = { // white on the right, black on the left
   { 0, 0, 0, 0, 5, 0, 5, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 }
+  { 0,10, 0, 0, 0, 0, 0, 0 }
 };
 
 /* print board */
@@ -3874,8 +3874,9 @@ void test() {
   array_to_board(input_board, b);
   print_input_board();
   struct move2 movelist[MAXMOVES];
-  int n = 0;
-  black_king_capture(b, &n, movelist, 13);
+  int n;
+  //black_king_capture(b, &n, movelist, 13);
+  n = Gen_Captures(b, movelist, BLACK);
   for (int i = 0; i < n; i++) {
     movetostring(movelist[i], moveStr);
     printf(" Move: %s   %d\n", moveStr, (int)(movelist[i].l));
