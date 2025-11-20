@@ -3701,12 +3701,12 @@ int input_board[8][8] = { // white on the right, black on the left
   
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 5, 0, 5, 0 },
+  { 0, 0, 0, 0, 6, 0, 6, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 5, 0, 5, 0 },
+  { 0, 0, 0, 0, 6, 0, 6, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0,10, 0, 0, 0, 0, 0, 0 }
+  { 0, 9, 0, 0, 0, 0, 0, 0 }
 };
 
 /* print board */
@@ -3876,7 +3876,7 @@ void test() {
   struct move2 movelist[MAXMOVES];
   int n;
   //black_king_capture(b, &n, movelist, 13);
-  n = Gen_Captures(b, movelist, BLACK);
+  n = Gen_Captures(b, movelist, WHITE);
   for (int i = 0; i < n; i++) {
     movetostring(movelist[i], moveStr);
     printf(" Move: %s   %d\n", moveStr, (int)(movelist[i].l));
