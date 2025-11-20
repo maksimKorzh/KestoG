@@ -3701,9 +3701,9 @@ int input_board[8][8] = { // white on the right, black on the left
   
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 5, 0, 5, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 5, 0, 5, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 }
@@ -3870,8 +3870,17 @@ void perft_test(int depth, int color) {
 
 void test() {
   int b[46];
+  char moveStr[80];
   array_to_board(input_board, b);
-  for (int i = 0; i < 46; i++) printf(" %2d", b[i]);
+  print_input_board();
+  struct move2 movelist[MAXMOVES];
+  int n = 0;
+  black_king_capture(b, &n, movelist, 13);
+  for (int i = 0; i < n; i++) {
+    movetostring(movelist[i], moveStr);
+    printf(" Move: %s   %d\n", moveStr, (int)(movelist[i].l));
+    for (int j = 0; j < 10; j++) printf("    m %d, path %d\n", (int)(movelist[i].m[j]), (int)(movelist[i].path[j]));
+  }
 }
 
 int main() {
