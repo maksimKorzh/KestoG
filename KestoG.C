@@ -3946,23 +3946,51 @@ void perft_test_suit() {
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
   
-  parse_fen("B:Wa3,c3,e3,g3,b2,d2,f2,h2,a1,c1,e1,g1:Bb8,d8,f8,h8,a7,c7,e7,g7,b6,d6,f6,h6", &color, b);
+  parse_fen("W:Wa7,a5,b4,c3,f2,h2,g1:Bb8,c7,e7,g7,g5,f4,h4:H0:F1", &color, b);
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
   
-  parse_fen("W:Wd4:Bc7,e7,e5,g5,g3", &color, b);
+  parse_fen("W:Wd6,a3,g3,f2,h2,c1,g1:Bb8,f8,h8,b6,f6,h6,h4:H0:F1", &color, b);
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
   
-  parse_fen("B:Wc7,e7,e5,g5,g3:Bd4", &color, b);
+  parse_fen("B:Wc5,e5,b4,a3,e3,f2,h2,g1:Bb8,h8,a7,c7,g7,h6,g5,h4:H0:F1", &color, b);
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
   
-  parse_fen("W:We5:Bb6,b4,d4,d2,f2", &color, b);
+  parse_fen("W:Wc5,b4,d4,f4,a3,f2,h2,g1:Bd8,a7,e7,g7,d6,f6,h6,h4:H0:F1", &color, b);
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
   
-  parse_fen("B:Wb6,b4,d4,d2,f2:Be5", &color, b);
+  parse_fen("W:Wc5,e5,d4,g3,d2,f2,a1,c1,e1,g1:Bf8,h8,a7,c7,e7,g7,b6,h6,a5,g5:H0:F1", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("B:Wb4,d4,f4,a3,e3,g3,b2,d2,f2,a1,e1,g1:Bb8,d8,f8,h8,a7,c7,e7,b6,h6,c5,g5,h4:H0:F1", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("W:Wa5,d4,f4,a3,c3,e3,h2,c1:Bb8,a7,c7,b6,f6,h6,c5,g5:H0:F1", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("W:Wg5,f4,h4,a3,e3,d2:Bf8,h8,e7,b6,d6,h6:H0:F1", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("W:Wd4,f4,h4,a3,c3:Bd8,e7,b6,h6,c5:H0:F1", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("W:Wd4,f4,a3,c3,e3,d2,f2,h2,c1,e1,g1:Bb8,d8,f8,h8,a7,b6,d6,h6,c5,g5,h4:H0:F1", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("W:Wc5,d4,f4,h4,g3,h2,e1:Bf8,a7,e7,g7,d6,a5:H0:F1", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("B:Wd4,f4,a3,e3,b2,f2,h2,e1,g1:Bb8,d8,h8,g7,b6,d6,h6,a5,c5,h4:H0:F1", &color, b);
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
 }

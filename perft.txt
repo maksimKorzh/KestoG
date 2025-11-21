@@ -1,62 +1,338 @@
-INITIAL
+ Side to move: white
 
-Vakhtan:
-Move: a3b4, nodes: 153930
-Move: c3d4, nodes: 111711
-Move: c3b4, nodes: 178054
-Move: e3f4, nodes: 103528
-Move: e3d4, nodes: 124257
-Move: g3h4, nodes: 156933
-Move: g3f4, nodes: 101489
+ 8 . x . x . x . x
+ 7 x . x . x . x .
+ 6 . x . x . x . x
+ 5 . . . . . . . .
+ 4 . . . . . . . .
+ 3 o . o . o . o .
+ 2 . o . o . o . o
+ 1 o . o . o . o .
+   a b c d e f g h
 
-KestoG:
-Move: a3-b4, nodes: 153931 -
-Move: c3-d4, nodes: 111712 -
-Move: c3-b4, nodes: 178054 +
-Move: e3-f4, nodes: 103528 +
-Move: e3-d4, nodes: 124258 -
-Move: g3-h4, nodes: 156933 +
-Move: g3-f4, nodes: 101489 +
+ Perft test, depth 10:
 
-AFTER A3B4
+ Move: g3-f4, nodes: 2492773
+ Move: g3-h4, nodes: 3696684
+ Move: e3-d4, nodes: 3125791
+ Move: e3-f4, nodes: 2505611
+ Move: c3-b4, nodes: 4202737
+ Move: c3-d4, nodes: 2757672
+ Move: a3-b4, nodes: 3669379
 
-Vakhtan:
-Move: b6a5, nodes: 25128
-Move: b6c5, nodes: 15646
-Move: d6c5, nodes: 2856
-Move: d6e5, nodes: 25551
-Move: f6e5, nodes: 23201
-Move: f6g5, nodes: 32367
-Move: h6g5, nodes: 29181
+    Depth: 10
+    Nodes: 22450647
+     Time: 874
 
-KestoG:
-Move: h6-g5, nodes: 29182 -
-Move: f6-g5, nodes: 32367 +
-Move: f6-e5, nodes: 23201 +
-Move: d6-e5, nodes: 25551 +
-Move: d6-c5, nodes: 2856  +
-Move: b6-c5, nodes: 15646 +
-Move: b6-a5, nodes: 25128 +
+ Side to move: white
 
-AFTER H6G5
+ 8 . x . . . . . .
+ 7 o . x . x . x .
+ 6 . . . . . . . .
+ 5 o . . . . . x .
+ 4 . o . . . x . x
+ 3 . . o . . . . .
+ 2 . . . . . o . o
+ 1 . . . . . . o x
+   a b c d e f g h
 
-Vakhtan:
-Move: b4c5, nodes: 243
-index.html:542 Move: b4a5, nodes: 5074
-index.html:542 Move: c3d4, nodes: 3958
-index.html:542 Move: e3f4, nodes: 418
-index.html:542 Move: e3d4, nodes: 4938
-index.html:542 Move: g3h4, nodes: 4179
-index.html:542 Move: g3f4, nodes: 2645
-index.html:542 Move: b2a3, nodes: 7726
+ Perft test, depth 10:
 
-KestoG:
-Move: b4-a5, nodes: 5074 +
-Move: b4-c5, nodes: 243  +
-Move: g3-f4, nodes: 2645 +
-Move: g3-h4, nodes: 4179 +
-Move: e3-d4, nodes: 4938 +
-Move: e3-f4, nodes: 419  -
-Move: c3-d4, nodes: 3958 +
-Move: b2-a3, nodes: 7726 +
+ Move: a5-b6, nodes: 26178
+ Move: b4-c5, nodes: 187295
+ Move: c3-d4, nodes: 265510
+ Move: h2-g3, nodes: 109972
+ Move: f2-e3, nodes: 52165
+ Move: f2-g3, nodes: 3431
 
+    Depth: 10
+    Nodes: 644551
+     Time: 37
+
+ Side to move: white
+
+ 8 . x . . . x . x
+ 7 . . . . . . . .
+ 6 . x . o . x . x
+ 5 . . . . . . . .
+ 4 . . . . . . . x
+ 3 o . . . . . o .
+ 2 . . . . . o . o
+ 1 . . o . . . o x
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: d6-c7, nodes: 1411617
+ Move: d6-e7, nodes: 1726381
+ Move: g3-f4, nodes: 2905434
+ Move: a3-b4, nodes: 1598888
+ Move: f2-e3, nodes: 1742898
+ Move: c1-b2, nodes: 1258328
+ Move: c1-d2, nodes: 1714995
+
+    Depth: 10
+    Nodes: 12358541
+     Time: 487
+
+ Side to move: black
+
+ 8 . x . . . . . x
+ 7 x . x . . . x .
+ 6 . . . . . . . x
+ 5 . . o . o . x .
+ 4 . o . . . . . x
+ 3 o . . . o . . .
+ 2 . . . . . o . o
+ 1 . . . . . . o x
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: g7-f6, nodes: 32451
+ Move: c7-d6, nodes: 111296
+ Move: c7-b6, nodes: 116639
+ Move: a7-b6, nodes: 15343
+ Move: g5-f4, nodes: 79611
+ Move: h4-g3, nodes: 80851
+
+    Depth: 10
+    Nodes: 436191
+     Time: 22
+
+ Side to move: white
+
+ 8 . . . x . . . .
+ 7 x . . . x . x .
+ 6 . . . x . x . x
+ 5 . . o . . . . .
+ 4 . o . o . o . x
+ 3 o . . . . . . .
+ 2 . . . . . o . o
+ 1 . . . . . . o x
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: c5-b6, nodes: 45982
+ Move: f4-e5, nodes: 49546
+ Move: f4-g5, nodes: 14787
+ Move: d4-e5, nodes: 96260
+ Move: b4-a5, nodes: 86173
+ Move: h2-g3, nodes: 94701
+ Move: f2-e3, nodes: 195672
+ Move: f2-g3, nodes: 8906
+
+    Depth: 10
+    Nodes: 592027
+     Time: 33
+
+ Side to move: white
+
+ 8 . . . . . x . x
+ 7 x . x . x . x .
+ 6 . x . . . . . x
+ 5 x . o . o . x .
+ 4 . . . o . . . .
+ 3 . . . . . . o .
+ 2 . . . o . o . .
+ 1 o . o . o . x .
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: e5-d6, nodes: 58339
+ Move: e5-f6, nodes: 89238
+ Move: c5-d6, nodes: 166954
+ Move: g3-f4, nodes: 36941
+ Move: g3-h4, nodes: 51683
+ Move: f2-e3, nodes: 337849
+ Move: d2-c3, nodes: 71234
+ Move: d2-e3, nodes: 397916
+ Move: c1-b2, nodes: 692156
+ Move: a1-b2, nodes: 56357
+
+    Depth: 10
+    Nodes: 1958667
+     Time: 87
+
+ Side to move: black
+
+ 8 . x . x . x . x
+ 7 x . x . x . . .
+ 6 . x . . . . . x
+ 5 . . x . . . x .
+ 4 . o . o . o . x
+ 3 o . . . o . o .
+ 2 . o . o . o . .
+ 1 o . . . o . o x
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: h8-g7, nodes: 83520
+ Move: f8-g7, nodes: 263904
+ Move: e7-f6, nodes: 48650
+ Move: e7-d6, nodes: 245436
+ Move: c7-d6, nodes: 317240
+ Move: b6-a5, nodes: 68750
+
+    Depth: 10
+    Nodes: 1027500
+     Time: 57
+
+ Side to move: white
+
+ 8 . x . . . . . .
+ 7 x . x . . . . .
+ 6 . x . . . x . x
+ 5 o . x . . . x .
+ 4 . . . o . o . .
+ 3 o . o . o . . .
+ 2 . . . . . . . o
+ 1 . . o . . . x .
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: f4-e5, nodes: 30617
+ Move: d4-e5, nodes: 59743
+ Move: c3-b4, nodes: 12262
+ Move: a3-b4, nodes: 21519
+ Move: h2-g3, nodes: 15289
+ Move: c1-b2, nodes: 15161
+ Move: c1-d2, nodes: 17286
+
+    Depth: 10
+    Nodes: 171877
+     Time: 11
+
+ Side to move: white
+
+ 8 . . . . . x . x
+ 7 . . . . x . . .
+ 6 . x . x . . . x
+ 5 . . . . . . o .
+ 4 . . . . . o . o
+ 3 o . . . o . . .
+ 2 . . . o . . . .
+ 1 . . . . . . . x
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: g5-f6, nodes: 19233
+ Move: f4-e5, nodes: 118524
+ Move: e3-d4, nodes: 133660
+ Move: a3-b4, nodes: 93123
+ Move: d2-c3, nodes: 81860
+
+    Depth: 10
+    Nodes: 446400
+     Time: 25
+
+ Side to move: white
+
+ 8 . . . x . . . .
+ 7 . . . . x . . .
+ 6 . x . . . . . x
+ 5 . . x . . . . .
+ 4 . . . o . o . o
+ 3 o . o . . . . .
+ 2 . . . . . . . .
+ 1 . . x . . . . .
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: h4-g5, nodes: 310
+ Move: f4-e5, nodes: 14447
+ Move: f4-g5, nodes: 8251
+ Move: d4-e5, nodes: 53897
+ Move: c3-b4, nodes: 105
+ Move: a3-b4, nodes: 10166
+
+    Depth: 10
+    Nodes: 87176
+     Time: 6
+
+ Side to move: white
+
+ 8 . x . x . x . x
+ 7 x . . . . . . .
+ 6 . x . x . . . x
+ 5 . . x . . . x .
+ 4 . . . o . o . x
+ 3 o . o . o . . .
+ 2 . . . o . o . o
+ 1 . . o . o . o x
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: f4-e5, nodes: 94738
+ Move: d4-e5, nodes: 704279
+ Move: c3-b4, nodes: 902664
+ Move: a3-b4, nodes: 184787
+ Move: h2-g3, nodes: 1001328
+ Move: f2-g3, nodes: 135200
+ Move: c1-b2, nodes: 1002162
+
+    Depth: 10
+    Nodes: 4025158
+     Time: 215
+
+ Side to move: white
+
+ 8 . . . . . x . .
+ 7 x . . . x . x .
+ 6 . . . x . . . .
+ 5 x . o . . . . .
+ 4 . . . o . o . o
+ 3 . . . . . . o .
+ 2 . . . . . . . o
+ 1 x . . . o . . .
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: c5-b6, nodes: 451705
+ Move: h4-g5, nodes: 351373
+ Move: f4-e5, nodes: 182435
+ Move: f4-g5, nodes: 267728
+ Move: d4-e5, nodes: 141692
+ Move: e1-d2, nodes: 198559
+ Move: e1-f2, nodes: 190365
+
+    Depth: 10
+    Nodes: 1783857
+     Time: 74
+
+ Side to move: black
+
+ 8 . x . x . . . x
+ 7 . . . . . . x .
+ 6 . x . x . . . x
+ 5 x . x . . . . .
+ 4 . . . o . o . x
+ 3 o . . . o . . .
+ 2 . o . . . o . o
+ 1 . . . . o . o x
+   a b c d e f g h
+
+ Perft test, depth 10:
+
+ Move: d8-e7, nodes: 870187
+ Move: d8-c7, nodes: 500461
+ Move: b8-c7, nodes: 680272
+ Move: b8-a7, nodes: 567338
+ Move: g7-f6, nodes: 975512
+ Move: h6-g5, nodes: 478715
+ Move: d6-e5, nodes: 346888
+ Move: c5-b4, nodes: 500534
+ Move: a5-b4, nodes: 483787
+ Move: h4-g3, nodes: 652202
+
+    Depth: 10
+    Nodes: 6055896
+     Time: 311
