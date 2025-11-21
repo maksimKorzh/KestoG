@@ -3656,14 +3656,23 @@ bool is_prime(long n)
 
 /* set board position */
 int input_board[8][8] = { // white on the right, black on the left
-  { 6, 0, 6, 0, 0, 0, 5, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 0 },
+  
+  /*{ 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 5, 0, 5 },
   { 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 5, 0, 5 },
   { 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 5, 0, 5 },
   { 6, 0, 6, 0, 0, 0, 5, 0 },
-  { 0, 6, 0, 0, 0, 5, 0, 5 }
+  { 0, 6, 0, 0, 0, 5, 0, 5 }*/
 
   /*{ 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 0, 0, 5 },
@@ -3887,11 +3896,55 @@ void test() {
   }
 }
 
+void parse_fen(char *fen, int *color) {
+  *color = (*fen == 'W') ? WHITE : BLACK;
+  fen += 2;
+  int pce = WHITE;
+  int rank = MAN;
+  while (*fen != 0) {
+    int row, col;
+    switch(*fen) {
+      case 'B': pce = BLACK; break;
+      case 'K': rank = KING;
+      case 'a': row = 7; break;
+      case 'b': row = 6; break;
+      case 'c': row = 5; break;
+      case 'd': row = 4; break;
+      case 'e': row = 3; break;
+      case 'f': row = 2; break;
+      case 'g': row = 1; break;
+      case 'h': row = 0; break;
+      case '1': col = 7; break;
+      case '2': col = 6; break;
+      case '3': col = 5; break;
+      case '4': col = 4; break;
+      case '5': col = 3; break;
+      case '6': col = 2; break;
+      case '7': col = 1; break;
+      case '8': col = 0; break;
+      case ':':
+      case ',':
+        input_board[row][col] = pce|rank;
+        rank = MAN;
+        break;
+    }
+    *fen++;
+  }
+}
+
 int main() {
   //move_from_initial_position();
   
   // use input_board[8][8] to set the position for perft
-  perft_test(10, WHITE); // board 3690
+  //perft_test(10, WHITE); // board 3690
+
+  int b[46];  
+  int color;
+  //parse_fen("W:Wg3,f2,h2,Ke1:Ba7,e7,b6,d6,e5,c3", &color);
+  parse_fen("W:WKg3,f2,h2,Ke1:Ba7,e7,Kb6,Kd6,e5,c3", &color);
+  printf("color %d\n", color);
+  array_to_board(input_board, b);
+  print_input_board();
   
   //test();
   return 0;
