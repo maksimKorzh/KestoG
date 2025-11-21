@@ -3896,7 +3896,12 @@ void test() {
   }
 }
 
-void parse_fen(char *fen, int *color) {
+void parse_fen(char *fen, int *color, int *b) {
+  nodes = 0;
+  for (int i = 0; i < 8; i++)
+    for (int j = 0; j < 8; j++)
+      input_board[i][j] = 0;
+  
   *color = (*fen == 'W') ? WHITE : BLACK;
   fen += 2;
   int pce = WHITE;
@@ -3929,23 +3934,42 @@ void parse_fen(char *fen, int *color) {
         break;
     }
     *fen++;
-  }
+    if (*fen == 0) input_board[row][col] = pce|rank;
+  } array_to_board(input_board, b);
+}
+
+void perft_test_suit() {
+  int b[46];  
+  int color;
+  
+  parse_fen("W:Wa3,c3,e3,g3,b2,d2,f2,h2,a1,c1,e1,g1:Bb8,d8,f8,h8,a7,c7,e7,g7,b6,d6,f6,h6", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("B:Wa3,c3,e3,g3,b2,d2,f2,h2,a1,c1,e1,g1:Bb8,d8,f8,h8,a7,c7,e7,g7,b6,d6,f6,h6", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("W:Wd4:Bc7,e7,e5,g5,g3", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("B:Wc7,e7,e5,g5,g3:Bd4", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("B:Wb6,b4,d4,d2,f2:Be5", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
+  
+  parse_fen("W:We5:Bb6,b4,d4,d2,f2", &color, b);
+  printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
+  perft_test(10, color);
 }
 
 int main() {
   //move_from_initial_position();
-  
-  // use input_board[8][8] to set the position for perft
-  //perft_test(10, WHITE); // board 3690
-
-  int b[46];  
-  int color;
-  //parse_fen("W:Wg3,f2,h2,Ke1:Ba7,e7,b6,d6,e5,c3", &color);
-  parse_fen("W:WKg3,f2,h2,Ke1:Ba7,e7,Kb6,Kd6,e5,c3", &color);
-  printf("color %d\n", color);
-  array_to_board(input_board, b);
-  print_input_board();
-  
   //test();
+  perft_test_suit();
   return 0;
 }
