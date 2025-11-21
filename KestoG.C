@@ -641,6 +641,7 @@ while ( ( b[temp] & FREE ) != 0 );
 if ( ( b[temp] & WHITE ) != 0 ) {
       capsq = temp;
       temp = temp - 5;
+      
       while ( ( b[temp] & FREE ) != 0 )
       {
           if ( Test_From_02b(b,temp) ) {
@@ -662,9 +663,10 @@ if ( ( b[temp] & WHITE ) != 0 ) {
              // recursion
              black_king_capture(b, n, movelist, temp);
              b[capsq] = tmp;
-                                                          }
+          }
           temp = temp - 5;
       }
+      
       if ( !found_pd ) {
        temp = capsq;
        temp = temp - 5;
@@ -689,7 +691,7 @@ if ( ( b[temp] & WHITE ) != 0 ) {
              b[capsq] = tmp;
           temp = temp - 5;
       }
-            }
+   }
 }  // End for direction
 
 if ( !found_cap ) (*n)++;
@@ -3663,50 +3665,41 @@ int input_board[8][8] = { // white on the right, black on the left
   { 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 5, 0, 5 }
 
-  /*{ 6, 0, 6, 0, 5, 0, 5, 0 },
+  /*{ 6, 0, 6, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 0, 0, 0, 0, 5 },
-  { 6, 0, 0, 0, 5, 0, 5, 0 },
-  { 0, 6, 0, 6, 0, 5, 0, 0 },
-  { 0, 0, 6, 0, 5, 0, 5, 0 },
-  { 0, 6, 0, 0, 0, 0, 0, 5 },
-  { 6, 0, 6, 0, 0, 0, 5, 0 },
-  { 0, 6, 0, 6, 0, 5, 0, 5 }*/
-  
-  /*{ 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 6, 0, 6, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 9, 0 },
-  { 0, 0, 0, 6, 0, 6, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 }*/
-  
-  /*{ 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 9, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 6, 0, 0, 0 },
-  { 0, 0, 0, 6, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 6, 0, 0, 0 },
-  { 0, 0, 0, 6, 0, 6, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 }*/
-  
-  /*{ 0, 0, 0, 0, 0, 0, 0, 0 },
+  { 6, 0, 6, 0, 0, 0, 0, 0 },
   { 0, 6, 0, 0, 0, 0, 0, 0 },
-  { 9, 0, 0, 0, 6, 0, 0, 0 },
-  { 0, 0, 0, 6, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 6, 0, 0, 0 },
-  { 0, 0, 0, 6, 0, 6, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 }*/
+  { 6, 0, 6, 0, 6, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 0, 5 },
+  { 6, 0, 6, 0, 5, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 0, 0, 5 }*/
   
-  /*{ 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 5, 0, 0, 0 },
+  /*{ 6, 0, 6, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 0, 0, 0 },
+  { 6, 0, 0, 0, 0, 0, 5, 0 },
   { 0, 6, 0, 6, 0, 0, 0, 0 },
+  { 6, 0, 0, 0, 6, 0, 5, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 6, 0, 6, 0, 0, 0, 0 },
+  { 9, 0, 6, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 0, 0, 0, 0, 5 }*/
+  
+  /*{ 0, 0, 6, 0, 0, 0, 0, 0 }, // turkish
+  { 0, 6, 0, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 5, 0, 5, 0 },
+  { 0, 0, 0, 0, 0, 5, 0, 0 },
+  { 0, 0, 6, 0, 5, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 5, 0, 0 },
   { 0, 0, 0, 0, 0, 0, 0, 0 },
-  { 0, 0, 0, 0, 0, 0, 0, 0 }*/
+  { 0, 0, 0,10, 0, 0, 0, 0 }*/
+  
+  /*{ 0, 0, 0, 0, 0, 0, 5, 0 }, // double
+  { 0, 0, 0, 0, 0, 5, 0, 0 },
+  { 0, 0, 0, 0, 0, 0, 5, 0 },
+  { 0, 6, 0, 6, 0, 0, 0, 9 },
+  { 0, 0, 6, 0, 0, 0, 0, 0 },
+  { 0, 0, 0, 0, 0, 6, 0, 0 },
+  { 0, 0, 6, 0, 0, 0, 0, 0 },
+  { 0, 6, 0, 0, 0, 0, 0, 0 }*/
 };
 
 /* print board */
@@ -3832,8 +3825,12 @@ void perft_driver(int b[46], int depth, int color) {
   int capture, i, n;
   struct move2 movelist[MAXMOVES];
   capture = test_capture(b, color);
-  if (capture) n = Gen_Captures(b,movelist,color);
-  else n = Gen_Moves(b,movelist,color);
+  
+  n = Gen_Captures(b,movelist, color);
+  if (!n) n = Gen_Moves(b, movelist, color);
+  
+  //if (capture) n = Gen_Captures(b,movelist,color);
+  //else n = Gen_Moves(b,movelist,color);
   for (i = 0; i < n; i++) {
     domove(b,&movelist[i]);
     perft_driver(b, depth-1, color^CHANGECOLOR);
@@ -3851,8 +3848,14 @@ void perft_test(int depth, int color) {
   char moveStr[80];
   struct move2 movelist[MAXMOVES];
   capture = test_capture(b, color);
-  if (capture) n = Gen_Captures(b,movelist,color);
-  else n = Gen_Moves(b,movelist,color);
+  
+  n = Gen_Captures(b,movelist, color);
+  if (!n) n = Gen_Moves(b, movelist, color);
+  
+  //if (capture) n = Gen_Captures(b,movelist,color);
+  //else n = Gen_Moves(b,movelist,color);
+  
+  
   for (i = 0; i < n; i++) {
     domove(b,&movelist[i]);
     U64 cummulative_nodes = nodes;
