@@ -3958,11 +3958,11 @@ void perft_test_suit() {
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
   
-  parse_fen("B:Wb6,b4,d4,d2,f2:Be5", &color, b);
+  parse_fen("W:We5:Bb6,b4,d4,d2,f2", &color, b);
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
   
-  parse_fen("W:We5:Bb6,b4,d4,d2,f2", &color, b);
+  parse_fen("B:Wb6,b4,d4,d2,f2:Be5", &color, b);
   printf(" Side to move: %s\n", (color == 2) ? "black" : "white");
   perft_test(10, color);
 }
